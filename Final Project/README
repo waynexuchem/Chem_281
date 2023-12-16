@@ -1,0 +1,64 @@
+How To
+
+* Copy gpuintro.cu to your perlmuter directory
+Example
+
+scp gpuintro.cu my_login_name@@perlmutter-p1.nersc.gov:/global/homes/x/yyyy
+
+enter your password and OTP at the prompt
+/global/homes/x/yyyy is your home directory. To find out your home directory,
+login to Perlmutter and type:
+pwd
+
+* Compile gpuintro.cu
+
+nvcc -o gpuintro -O3 gpuintro.cu
+
+* Copy launch.sh to your perlmutter home directory
+scp ....
+On perlmutter
+chmod u+x launch.sh
+
+* Launch the job
+sbatch launch.sh
+
+You will get a message from sbatch like
+Submitted batch job xxxxxxxx  <== sbatch output
+
+where xxxx...  is the job id
+The ouput of your submission will be in the file
+slurm-xxxxxxxx.out where xxxxxxx is the job id.
+
+* To Do
+
+Implement the cpu version of the saxpy product, remove the comment from the
+commented out lines. Compare the results, the error should be 0.
+Compare the cpu vs gpu times.
+
+* Notes:
+-A is your project id
+-C cpu/gpu (the type of request)
+gpus jobs must:
+** run on the shared queue (-q)
+** use a minimum of 32 cores (-c)
+** t specifies the time, in this case 5 minutes. (You need less that that)
+
+Jobs on Perlmutter run on a queue-based system.
+
+you can monitor your job with the following commands:
+squeue --me --start
+squeue -u your-user-name
+squeue --job xxxxxxxx  where xxxxxxxx is your job id
+
+* More Resources
+https://docs.nersc.gov/systems/perlmutter/running-jobs
+Running Jobs on Perlmutter
+https://www.youtube.com/watch?v=OMhgASYjf9A
+Navigating NERSC
+https://www.youtube.com/watch?v=F4xnboT-Bww
+Programming Environment
+https://www.youtube.com/watch?v=XhuFLYoJUNY
+Accounts and allocations
+https://www.youtube.com/watch?v=W01zyzyUTOk
+Best Practices for Running Jobs
+https://www.youtube.com/watch?v=M-G-J4OVnvM

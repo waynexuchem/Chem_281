@@ -1,0 +1,11 @@
+Problem 4a Comparison:
+
+From problem 3a I receive the following results:
+    Length of the quarter arc of sin(x): 1.9101
+    Length of the entire cycle of sin(x): 7.6404
+
+From problem 4a I receive the following results:
+    Length of the quarter arc of sin(x): 1.9101
+    Execution time: 65826 microseconds
+
+Both results match well.
